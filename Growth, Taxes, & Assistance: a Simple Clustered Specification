@@ -1,0 +1,271 @@
+\documentclass[12pt,a4paper]{article}
+%\usepackage[latin1]{inputenc}
+%\RequirePackage{ifpdf}
+%\RequirePackage{amsmath,amsfonts,amssymb}
+%\RequirePackage{graphicx,xcolor}
+%\RequirePackage{booktabs}
+%\RequirePackage{authblk}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage[width=16.00cm, height=21.00cm]{geometry}
+\usepackage{nameref}
+% folowing  must be in this order
+\usepackage{varioref}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{booktabs,xltabular}
+\usepackage[table]{xcolor}
+\bibliographystyle{chicago}
+\author{Joe C. Fowler III\\ University of North Carolina, Charlotte}
+\title{Growth, Taxes, \& Assistance: a Simple Clustered Specification}
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+%\keywords{Economic Growth, Taxes, Tax Assistance}
+
+\begin{document}
+	\maketitle
+
+\newpage
+
+\doublespacing
+
+\section*{Introduction} \paragraph{}The purpose of this analysis is to determine the relationship between state and local firm financial assistance, tax incentives, and economic growth. There is no clear indication of the impact of taxes on economic growth because varying objective functions are being maximized\footnote{For example, optimal taxation can maximize revenue by taxing at the highest rate possible, increasing public goods and research funding. However, the increased taxation impacts firms' choices by reducing entrepreneurial incentives.} \citep{AGHION201624}\footnote{The researchers found non-linear effects based on the level of corruption.}. Due to the issues of determining how taxes impact economic growth, we propose to test the hypothesis on how economic growth is impacted state and local financial assistance and tax incentives. Taxation is a vital process that should benefit the welfare of the population. The implications of this research is to give additional support in the literature to the benefits of using tax incentives to spur economic growth in states.
+
+
+
+
+\section*{Research Design}
+
+\paragraph{Hypothesis} $H_0$: The number of financial assistance and tax incentives by state has no effect on their economic growth.\\
+$H_a$: The number of financial assistance and tax incentives by state has a positive effect on their economic growth.
+\paragraph{}We expect to utilize the linear regression type Random Effects with clustered standard errors in our analysis. However, the expected route will determine first pooled ordinary least squares (OLS) versus fixed effects (FE). Then using a Hausman test, determine best practice between random effects (RE) versus fixed effects. However, we find that FE may not be an appropriate measure because in this multilevel model\footnote{Because there are temporal changes to the data there are heterogeneous effects to the sample.} we want to understand both the within and between effects to understand how states differ--not just how they change over time \citep{article}. Therefore, we conduct an additional robust Hausman test. Additional estimation in a hybrid model may be helpful but is beyond the scope of this paper.
+\section*{Expected Conclusion} \paragraph{} We expect that our null hypothesis will be rejected and that an increase in the tax incentive index should positively impact economic growth. We make this assumption because the incentives created by government tax strategies are a critical component of firms' choices in location and migration \citep{giroud2019state,rathelot2008importance,wu2007local,riedel2018quantifying}. Furthermore, industrial clustering brings many advantages to firms, such as financial access, labor market pooling, specialized supplies, technological and knowledge spillovers  \citep{feldman1994geographic,porter1998clusters,glaeser2009wealth,ellison2010causes}.
+\paragraph{}To test the proposed hypothesis, we will be utilizing Gross Domestic Product as our dependent variable as this is the generally accepted \emph{second best} measure of economic growth. To control business cycle fluctuations and other labor market conditions, we will utilize both unemployment contributions and the unemployment rate. The four tax rate measures\ref{table-example} provide a good characterization of the state's tax structure and as controls for our explanatory variable, the Tax Incentives Index.
+\begin{table}[ht]
+\centering
+\caption{Expected Sources for Data}
+\begin{tabular}{|p{6cm}|p{6cm}|} \cline{1-2} \toprule
+\emph{Variable} & \emph{Where}  \\\midrule
+\rowcolor{green!20}Top corporate income tax rate (in \%)    & UoM Tax Database
+(1977-2002), Tax Foundation (2000-2011), and the Book of States   \\ 
+\rowcolor{green!30} Top personal income tax rate (in \%) & NBER database of state-level
+tax rates \\ 
+\rowcolor{green!40} Property tax share & Census of Government State \& Local Finances\\
+\rowcolor{green!50} Sales tax rate & UoM Tax Database for 1977-
+2002 and Tax Foundation for 2000-2011\\
+\rowcolor{green!60} Tax incentives index & Site Selection-Magazine\\
+\rowcolor{blue!20}  UI Contribution & Department of Labor\\
+\rowcolor{blue!30}  Unemployment Rate & Bureau of Economic Analysis\\\midrule
+\emph{Dependent Variable} & \emph{Where}  \\\midrule
+\rowcolor{red!80}  \textbf{Gross Domestic Product} & Bureau of Economic Analysis\\\bottomrule
+
+\bottomrule
+ \hline
+\end{tabular}
+
+\label{table-example}
+\end{table}
+\subsection*{The dependent variable} \paragraph{}The study utilizes local area GDP with estimates released by the U.S. Bureau of Economic Analysis (BEA). The local GDP by county has been log-transformed for simplicity of interpretation and normalization of the distribution\footnote{The BEA has an overview of the GDP by county methodology: \hyperref{https://www.bea.gov/system/files/2019-12/One_Page_Methodology_v6.pd}{PDF}{An Overview of the GDP by County Methodology }{An Overview of the GDP by County Methodology }}
+\subsection*{The explanatory variables} \paragraph{} The key explanatory variables in this estimation are taxes and tax incentives. The first of these is the top corporate income tax rate (in \%) which is provided by the University of Michigan Tax Database\footnote{\hyperref{https://www.bus.umich.edu/otpr/otpr/default.asp.}{PDF}{University of Michigan Tax Database}{University of Michigan Tax Database }}. Second, top personal income tax rate (in \%) is provided by NBER database of state-level tax rates \citep{feenberg1993introduction}. Third, and most important is the Tax incentives index provided by \hyperref{http://www.siteselection.com/issues/2009/nov/StateIncentives/upload/0911IncentiveChartsNotes.pdf}{PDF}{Site Selection-Magazine}{Site Selection-Magazine} which provides eighteen state and local financial assistance programs and fifteen state and local tax incentive programs compiled and linearly transformed into a single indicator $inc$. Next is the state’s budget balance \%, computed as 
+$(revenues - expenditures)/expenditures$\footnote{Similar to operating profit percentage equation.} derived from \hyperref{(http://www.census.gov/govs/local)}{PDF}{U.S. Census Bureau’s State \& Local Finances database }{U.S. Census Bureau’s State \& Local Finances database}. The variable gives us a reliable measure of the government's ability to balance the budget over the time period.
+\subsection*{Data and Limitations} \paragraph{} In this paper, we use panel data to explore time variables and cross-sectional further. This two-dimensional data set has many advantages, such as blending inter-individual differences and intra-individual dynamics. Also, it allows us to possibly observe the before and after effects greater than a pure time series. Panel data also allows us to view the inter-temporal dynamics and the variables' individuality. It may allow us to control for effects missing or unobserved in the data. Most variables are log-transformed; log transform is used to make highly skewed distributions less skewed. This can be valuable both for making patterns in the data more interpretable and for meeting the assumptions of inferential statistics. The limitations of this data set are that most of the data may have survey bias. Since most of the data is derived via survey and later controlled in particular ways by the arbiter, it may not have full explanatory power due to nonresponse \citep{dixon2007nonresponse,10.1162/rest_a_00748}. \hyperref[Summary]{Summary table} provides descriptive variable information.
+
+\section*{Methods}
+\paragraph{} We describe the panel estimation and model as follows:
+	    	\begin{gather*}\label{Model1} 
+	    \mathbf{ \ln{GDP}_{it}=\beta_{0} + \beta_{1} \ln{Cit}_{it}  + \beta_{2} \ln{cit\_flag}_{it} + \beta_{3} \ln{sales\_tax}_{it} + \beta_{4} \ln{Bal\_Budg}_{it}  + }\\ \mathbf{\beta_{5} \ln{PINC}_{it} + \beta_{6} \ln{Unem\_rate}_{it} + \beta_{7} \ln{tax_incentives}_{it} + U_{it}} \end{gather*}
+\paragraph{} We specify 6 different models, Ordinary least squares (OLS), Pooled OLS, Fixed effects (FE), Random effects (RE), FE with clustered standard errors, and RE with clustered standard errors. Additionally, we will test the standard errors between the RE and FE to determine if the FE assumptions is a reasonable addition to the model. 
+
+ \subsection*{Fixed Effects Estimation}	 \paragraph{} Log transformation of the dependent variable was done to reduce the heteroskedasticity of the error terms. The $\alpha_{i} $ term represents individual county effects capturing cultural and other time-invariant factors. The fixed-effects estimator removes the time constant variable by not requiring the assumption of orthogonality between $x$ and $\alpha_0$. We will prefer fixed effects over the random-effects estimator because the assumption that there is no correlation between city effects and the explanatory variables is implausible. We estimate this through a \hyperref[test]{Hausmen test} which is in the context of common effects between and within groups. The variation of an OLS in a panel setting comes in two forms, between and within. Within estimation takes advantage of within-group variation by demeaning. The between estimator takes advantage of variation between groups. 
+ \paragraph{}Thus, in a Hausman test, we test whether the random effects model which is the weighted average of within and between estimations versus the within estimation or fixed effects estimation only., in which the null hypothesis $\mathit{H_{0}}$ that both estimation methods fixed effects and random effects should yield similar coefficients. The alternative $\mathit{H_{a}}$ suggests the fixed effects estimation is good and the random effects are not; if this is the case, we should expect to see differences between the two model coefficients. This is due to the random effects estimator assuming the orthogonality of random effects to the regressors that are not present in the fixed effects estimator. If the assumption is wrong, we will see inconsistency in the random effects estimator but no effect on the fixed effects estimator. A large and significant Hausman statistic means a large and significant difference between the two estimated coefficients, thus leading to the rejection of the null hypothesis in favor of the alternative that the fixed effects estimator is preferred. The standard errors are clustered via county $id$ to isolate the between effects.
+ \subsection*{Random Effects Estimation} \paragraph{}The motivation for utilizing the RE is due to the assumption of $Z$ not being correlated with $X$ returns under the expectation of $Z|X = \mu$. Furthermore, if $X$ is a constant then $\mu$ is zero. So, we use random effects instead of pooled OLS because the OLS will be consistent but the standard errors will be understated and OLS is not efficient compared to the generalized least-squares procedure. Also, the random effects utilize the heteroskedasticity resulting from repeated observations of the same cross-section units, unlike OLS weighing all observations equally. 
+ \paragraph{} The additional argument that there are temporal changes to the data and there are heterogeneous effects on the sample motivates the additional \hyperref[test2]{Robust Hausman test} (RHT). The RHT is a cluster-robust bootstrap approach model test that is robust to arbitrary within-group serial correlation \citep{kaiser2015rhausman}. We utilize the RHT because we assume differences in shock response based on the state's size and other factors \cite{herwartz2007robust}. 
+ \section*{Results}\subsection*{Preferred Estimation Strategies} \paragraph{}The first major result identified is that the Lagrange Multiplier test shows that there are significant differences across states \hyperref[LMT]{appendix}. Running a pooled OLS regression is thus not appropriate and the RE model is the better choice\footnote{Additional tests were compiled to further understand the data generating process. Those tests were Breusch-Pagan, strong evidence for the presence of heteroskedasticity. Breusch-Godfrey/Wooldridge test for serial correlation in panel models, which rejected the null hypothesis providing evidence of serial correlation}.
+ \paragraph{} Second, the first Hausman test \hyperref[test]{appendix} revealed that the FE estimation is the preferred method. However, when moving to robust specification with clustered standard errors, the RHT \hyperref[test2]{appendix} finds no discernible difference between the two measures. Thereby, leading to the conclusion that the preferred method should be RE.
+ \subsection*{Random Effects Clustered Model} \paragraph{}For the sake of brevity we will only be interpreting the results of the \hyperref[Results2]{RE Clustered model}\footnote{additional reference to the other four regression models can be found in \hyperref[Results]{Appendix}}. First, we find a large coefficient with statistical significance at 1\% from the sales tax variable. However, we find this variable to possibly have endogeneity issues. The reasoning is that a wealthier or faster-growing state economy will likely legislate increasing sales tax in response to increasing economic growth. Therefore, we can say that there is speculative evidence that a one-point change in sales tax rate leads to a 2.63 \% point increase in expected economic growth.\paragraph{} Second, the $bal$ variable is statistically significant at the 1\% level with a negative coefficient. The coefficient provides evidence that an increase in taxes collected or a decrease in government expenditures (ceteris paribus) leads to a substantial decline in economic growth by 4.5\% points. Third, the unemployment rate is statistically significant at the 1\% level and has a negative coefficient. Thus, we have evidence that a 1-point increase in the unemployment rate leads to a decline of .23\% points in economic growth. 
+ \paragraph{}Last and the impetus behind the model is the aggregated variable $inc$. The incentives variable is statistically significant at the 1\% level with a positive coefficient. Therefore, we have evidence to reject the null hypothesis and alternatively that financial incentives do increase economic growth. A 1-point increase of incentives leads to an increase of roughly .7\% point increase in economic growth.
+
+ 
+
+
+
+\section*{Conclusion}\paragraph{} Our finding that tax \& financial incentives influence economic growth is consistent with our expected results driven by \citep{giroud2019state,rathelot2008importance,wu2007local,riedel2018quantifying}. The empirical relevance of tax \& financial incentives is consistent with \cite{giroud2019state} findings that reallocation of productive resources to other states drives the growth effect. However, our finding that an increase in taxes collected or a decrease in government expenditures has a negative influence is highly irregular, as it appears to be inconsistent with some public finance models’ formalization. Therefore, we consider that much of the results could be affected by endogeneity despite the identification of tax changes that are likely exogenous on objective grounds. Further research should attempt to control temporal issues via Panel Vector Autoregression (PVAR) through General Method of Moments (GMM) specification, or Structural Equation Modeling (SEM). 
+\newpage
+\bibliography{sample}
+\newpage
+\section*{Appendix}
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Tue, Apr 12, 2022 - 10:18:20 AM
+\begin{table}[!htbp] \centering 
+  \caption{Descriptive Statistics} 
+  \label{Summary} 
+\resizebox{\textwidth}{!}{\begin{tabular}{@{\extracolsep{5pt}}lccccccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+Statistic & \multicolumn{1}{c}{N} & \multicolumn{1}{c}{Mean} & \multicolumn{1}{c}{St. Dev.} & \multicolumn{1}{c}{Min} & \multicolumn{1}{c}{Pctl(25)} & \multicolumn{1}{c}{Pctl(75)} & \multicolumn{1}{c}{Max} \\ 
+\hline \\[-1.8ex] 
+fips & 1,785 & 28.961 & 15.681 & 1 & 16 & 42 & 56 \\ 
+year & 1,785 & 1,994.000 & 10.102 & 1,977 & 1,985 & 2,003 & 2,011 \\ 
+cit & 1,785 & 6.855 & 2.954 & 0.000 & 6.000 & 8.900 & 26.000 \\ 
+cit\_flag & 1,785 & 0.054 & 0.226 & 0 & 0 & 0 & 1 \\ 
+property & 1,645 & 26.825 & 9.942 & 0.000 & 25.000 & 33.330 & 33.330 \\ 
+payroll & 1,645 & 26.825 & 9.942 & 0.000 & 25.000 & 33.330 & 33.330 \\ 
+sales & 1,645 & 46.350 & 19.884 & 33.340 & 33.340 & 50.000 & 100.000 \\ 
+throwback & 1,645 & 0.600 & 0.490 & 0.000 & 0.000 & 1.000 & 1.000 \\ 
+throwout & 1,645 & 0.021 & 0.144 & 0.000 & 0.000 & 0.000 & 1.000 \\ 
+sal & 1,785 & 4.438 & 1.816 & 0 & 4 & 6 & 8 \\ 
+ui & 1,785 & 699.221 & 432.893 & 113 & 378 & 855 & 2,916 \\ 
+ui\_rate & 1,785 & 6.473 & 1.880 & 1.900 & 5.400 & 7.700 & 13.600 \\ 
+ui\_base & 1,785 & 10,658.430 & 5,884.446 & 4,200 & 7,000 & 12,000 & 37,300 \\ 
+pinc & 1,785 & 5.287 & 3.344 & 0.000 & 3.020 & 7.500 & 19.800 \\ 
+pr & 1,785 & 0.122 & 0.049 & 0.034 & 0.086 & 0.152 & 0.357 \\ 
+property\_taxes\_state & 1,785 & 155,319.300 & 434,236.700 & 0 & 138 & 87,155 & 3,870,605 \\ 
+property\_taxes\_local & 1,785 & 4,007,959.000 & 6,365,669.000 & 78,221 & 658,491 & 4,549,580 & 52,560,966 \\ 
+total\_revenue\_state & 1,785 & 18,270,537.000 & 28,172,554.000 & 0 & 4,136,334 & 21,360,783 & 334,311,421 \\ 
+total\_revenue\_local & 1,785 & 15,779,595.000 & 26,901,919.000 & 287,083 & 2,826,415 & 17,396,286 & 278,013,471 \\ 
+general\_revenue\_state & 1,785 & 15,087,880.000 & 22,029,978.000 & 0 & 3,449,461 & 17,956,192 & 211,436,247 \\ 
+general\_revenue\_local & 1,785 & 14,063,826.000 & 23,855,469.000 & 263,838 & 2,488,863 & 15,401,396 & 226,464,282 \\ 
+ue & 1,785 & 6.030 & 2.101 & 2.300 & 4.500 & 7.200 & 17.400 \\ 
+gdp & 1,785 & 154,278.000 & 225,452.000 & 3,347 & 33,231 & 183,018 & 2,030,468 \\ 
+bal & 1,785 & 0.082 & 0.134 & $-$0.761 & 0.029 & 0.148 & 1.249 \\ 
+lui & 1,785 & 6.383 & 0.577 & 4.731 & 5.935 & 6.751 & 7.978 \\ 
+inc & 1,750 & 21.133 & 6.422 & 4.000 & 16.000 & 26.000 & 38.000 \\ 
+log\_gdp & 1,785 & 11.262 & 1.182 & 8.116 & 10.411 & 12.117 & 14.524 \\ 
+log\_state\_rev\_total & 1,750 & 16.079 & 1.150 & 13.206 & 15.290 & 16.900 & 19.628 \\ 
+log\_state\_rev\_gen & 1,750 & 15.910 & 1.140 & 13.042 & 15.116 & 16.722 & 19.169 \\ 
+\hline \\[-1.8ex] 
+\end{tabular} }
+\end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\caption{Lagrange Multiplier Test - (Breusch-Pagan) for balanced panels}
+\label{LMT} 
+\begin{tabular}{ll} 
+\toprule
+$chi^{2}$                                     & 20512        \\
+Prob$>$chi2                                       & $\approx$  0        \\
+$H_a$:  significant effects \& Fail to reject  \\
+\bottomrule
+\textit{Note:} \\
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Hausman Test}
+\label{test} 
+\begin{tabular}{ll} 
+\toprule
+chi2(7)                                        & 18.84           \\
+Prob$>$chi2                                       & 0.0087          \\
+Ho:  difference in coefficients not systematic & Fail to reject  \\
+\bottomrule
+\textit{Note:} \\
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\caption{Cluster-Robust Hausman Test}
+\label{test2} 
+\begin{tabular}{ll} 
+\toprule
+chi2(7)                                        & 1.99            \\
+Prob$>$chi2                                       & 0.9601          \\
+Ho:  difference in coefficients not systematic & Fail to reject  \\
+\bottomrule
+\textit{Note:} based on 200 bootstrap repetitions\\
+\end{tabular}
+\end{table}
+
+\begin{table}[!htbp] 
+\centering
+\caption{Panel Estimation} 
+  \label{Results}
+\begin{tabular}[t]{lcccc}
+\toprule
+\textit{GDP Growth}  & OLS & Pooled OLS PLM & Fixed Effects & Random Effects\\
+\midrule
+Intercept & 8.652*** & 8.652*** &  & 9.192***\\
+ & (0.130) & (0.130) &  & (0.158)\\
+cit & 0.033*** & 0.033*** & -0.057*** & -0.055***\\
+ & (0.009) & (0.009) & (0.010) & (0.009)\\
+cit\_flag & 0.956*** & 0.956*** & 0.333** & 0.327**\\
+ & (0.110) & (0.110) & (0.113) & (0.110)\\
+sal & 0.184*** & 0.184*** & 0.267*** & 0.263***\\
+ & (0.013) & (0.013) & (0.016) & (0.016)\\
+bal & -0.288 & -0.288 & -0.457*** & -0.455***\\
+ & (0.178) & (0.178) & (0.071) & (0.071)\\
+pinc & -0.027*** & -0.027*** & -0.010 & -0.009\\
+ & (0.008) & (0.008) & (0.007) & (0.007)\\
+ue & 0.034** & 0.034** & -0.023*** & -0.023***\\
+ & (0.011) & (0.011) & (0.005) & (0.005)\\
+inc & 0.071*** & 0.071*** & 0.070*** & 0.071***\\
+ & (0.004) & (0.004) & (0.002) & (0.002)\\
+\midrule
+Num.Obs. & 1750 & 1750 & 1750 & 1750\\
+R2 & 0.358 & 0.358 & 0.669 & 0.663\\
+R2 Adj. & 0.355 & 0.355 & 0.658 & 0.662\\
+AIC & 4811.4 &  &  & \\
+BIC & 4860.6 &  &  & \\
+Log.Lik. & -2396.704 &  &  & \\
+F & 138.794 &  &  & \\
+RMSE & 0.95 &  &  & \\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
+
+
+% Table created by stargazer v.5.2.2 by Marek Hlavac, Harvard University. E-mail: hlavac at fas.harvard.edu
+% Date and time: Tue, Apr 12, 2022 - 3:30:08 PM
+\begin{table}[!htbp] \centering 
+  \caption{Clustered Panel Estimation} 
+  \label{Results1} 
+\begin{tabular}[t]{lcc} 
+\\[-1.0ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{1}{c}{\textit{GDP Growth}} \\ 
+\cline{2-3} 
+\\[-1.0ex] & \multicolumn{1}{c}{ } \\ 
+\\[-1.0ex] & Random Effects & Fixed Effects\\ 
+\hline \\[-1.0ex] 
+ cit & $-$0.055 & $-$0.057 \\ 
+  & (0.037) & (0.037) \\ 
+ cit\_flag & 0.327 & 0.333 \\ 
+  & (0.358) & (0.358) \\ 
+ sal & 0.263$^{***}$ & 0.267$^{***}$ \\ 
+  & (0.044) & (0.044) \\ 
+ bal & $-$0.455$^{***}$ & $-$0.457$^{***}$ \\ 
+  & (0.115) & (0.115) \\ 
+ pinc & $-$0.009 & $-$0.010 \\ 
+  & (0.034) & (0.034) \\ 
+ ue & $-$0.023$^{***}$ & $-$0.023$^{***}$ \\ 
+  & (0.007) & (0.007) \\ 
+ inc & 0.071$^{***}$ & 0.070$^{***}$ \\ 
+  & (0.006) & (0.006) \\ 
+ Constant & 9.192$^{***}$ &   9.202$^{***}$\\ 
+  & (0.301) &  (0.316)\\ 
+\hline \\[-1.0ex] 
+\(N\)       &        1750         &        1750         \\
+\(R^{2}\)   &                     &       0.669         \\
+\textit{AIC}&           .         &      1292.9         \\
+\textit{BIC}&           .         &      1331.2         \\
+\hline \\[-1.0ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table}
+
+
+%\bibliography{sample}
+
+\end{document}
